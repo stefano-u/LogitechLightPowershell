@@ -6,22 +6,16 @@
   - If you omit the `-On` parameter, it does the same thing
 - To turn off all Logitech Litra/Beam lights, run `.\LogiLight.ps1 -Off`
 
-## Run on Windows startup
+## Run on Windows startup/shutdown
 
-1. Open Task Scheduler
-2. Click "Create Task..."
-3. In the General tab:
-    1. Provide a Name
-    2. Select "Run whether user is logged on or not"
-4. In the Triggers tab:
-    1. Select "New..."
-    2. In the "Begin the task:" dropdown, select "At startup"
-5. In the Actions tab:
-    1. Select "New..."
-    2. In the "Action:" dropdown, select "Start a program"
-    3. In the "Program/script:" input, type `powershell.exe`
-    4. In the "Add arguments (optional):" input, type `-File <path-to-LogiLitraWindows-folder>\LogiLight.ps1`
-       - Where `<path-to-LogiLitraWindows-folder>` is the absolute path to the LogiLitraWindows folder on your computer
+1. Open `gpedit.msc`
+2. Go to Computer Configuration -> Windows Settings -> Scripts (Startup/Shutdown)
+3. Click on "Startup" or "Shutdown"
+4. In the "PowerShell Scripts" tab, click on the "Add..." button
+5. Click on "Browse..." and search for the `LogiLight.ps1` script in your computer
+6. For "Script Parameters":
+   1. If it's for "Startup", use `-On`
+   2. if it's for "Shutdown", use `-Off`
 
 ## Credits
 
