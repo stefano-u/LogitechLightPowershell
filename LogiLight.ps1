@@ -21,6 +21,11 @@ if (-not(Test-Path -Path $hidApiTesterFilePath -PathType Leaf)) {
 
 $lights = Get-LitraLight -HIDAPItesterPath $hidApiTesterFilePath
 
+if ($lights.Length -eq 0) {
+    Write-Error "There are no Logitech Litra or Beam Lights installed on your computer!"
+    exit
+}
+
 foreach ($light in $lights) {
     if ($On) {
         Start-LitraLight -vidpid $light.vidpid -OpenPath $light.path -HIDAPItesterPath $hidApiTesterFilePath
